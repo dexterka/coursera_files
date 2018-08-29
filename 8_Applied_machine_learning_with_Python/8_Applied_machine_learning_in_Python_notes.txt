@@ -7,5 +7,10 @@ b. regression (target values are continuous) -> a regression function
 a. clustering (find groups of similar instances)
 b. outlier detection (find unusual patterns)
 - important Python libraries: scikit-learn, pandas, numpy, scipy, matplotlib
-
-
+- kNN (k Nearest Neighbours) is usually used for supervised machine learning (as a classifier)
+- typically, the number of k is odd to ensure the simple majority vote (the more votes for the same category the easier to assign the test query point to the category)
+- parameter of kNN:
+a. distance (Euclidean, Minkowski)
+b. how many NN
+c. weighting (simple majority rule)
+d. to assign classes to groups
