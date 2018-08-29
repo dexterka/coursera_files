@@ -1,0 +1,13 @@
+Google Pagerank algorithm
+- robots.txt - what is (is not) allowed to scrape from the web
+
+================================================================================
+
+Data sources
+- my project: https://www.csob.sk/kontakty/pobocky-a-bankomaty?p_p_id=branchAndAtm_WAR_portalfoundation&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=branchesAndAtmsList.js
+- Google books ngram viewer: https://books.google.com/ngrams
+
+================================================================================
+
+Gmane.org - an archive of email messages
+- data cleansing (domain matching, email addresses matching, indexing db table)

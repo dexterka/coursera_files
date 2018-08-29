@@ -1,0 +1,45 @@
+14 Object-oriented programming
+- objects are bit of code and data
+- class is a template (a shape) with fields (attributes) and methods(functionalities)
+- object (or instance, a real thing) of a class consists of state and the bahaviour (f.e. Lassie is an instance of the class dog)
+- method is usually applied only on a certain object, f.e. object.find() or object.split() or object.decode()
+- there can be multiple independent instances of a single class
+- inheritance means that if I create a new class it will inherit all the capabilities of the original class (plus some new ones) >> reuse and DRY!
+
+================================================================================
+
+15a Relational databases
+- SQL has 4 basic features : CRUD (Create/Read/Update/Delete)
+- SQLite is built-in Python (embedded database)
+>>> INSERT statement:
+INSERT INTO Users
+  VALUES ('Kristin', 'kf@umich.edu')
+>>> DELETE statement:
+DELETE FROM Users
+  WHERE email = 'fred@umich.edu'
+>>> UPDATE statement:
+UPDATE Users
+  SET name = 'Charles'
+  WHERE email = 'csev@umich.edu'
+>>> RETRIEVE DATA with SELECT statement
+SELECT * FROM Users
+WHERE name = 'Charles' and email = 'csev@umich.edu'
+>>> ORDER the data
+SELECT name
+FROM Users
+ORDER BY name ASC
+
+================================================================================
+
+15b Data models
+- relationships are relevant so as not to repeat ourselves
+
+================================================================================
+
+15c Many to many relationships
+- we usually need to add a table with 2 foreign keys (not a primary key because we can obtain the primary key as a composite of the two foreign keys)
+
+================================================================================
+
+15d Data visualization
+- data stored in a database are being visualized using Google Maps API, Javascript and D3.js

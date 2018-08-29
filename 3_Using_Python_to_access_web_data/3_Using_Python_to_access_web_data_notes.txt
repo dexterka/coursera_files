@@ -1,0 +1,54 @@
+11 Regular expressions
+- more intelligent way of searching/looking for patterns
+- very powerful but greedy (returns the largest possible match)
+- . (dot) is the wildcard character
+- not in-built in Python, need to import the re module:
+>>> import re
+- re.search() - searches for a pattern:
+# starts with X followed by dash, one or more non-white spaces and a colon
+    if re.search('^X-\S+:', line):  
+        print('4:', line)
+- re.findall() - extracts the pattern:
+# extracts numbers with one or more digits
+numbers = re.findall('[0-9]+', line)  
+    print('5:', line, numbers)  # returns a list of string values
+- non-greedy matching is achieved by adding "?":
+# starts with B followed by one or more characters but not in a greedy way
+    not_greedy = re.findall('^B.+?', line)  
+    print('7:', line, not_greedy)
+- parentheses ()  tell where to start and where to end while extracting
+- regexp can be escaped with \ to use them as a normal character, f.e.:
+\$([0-9.+]) - will search for one or more digits with real dollar sign at the very beginning
+
+================================================================================
+
+12 a) Network and sockets
+- in the transport layer an application (written in php, java, Python ...) connects to another application (usually a web server) on the other side
+- in this case a connection towards the web server represents a socket (the endpoint of the bidirectional "communication" of the applications)
+- Python has in-built support for TCP ports
+- HTTP protocols allows the web server to retrieve some documents from the internet
+
+================================================================================
+
+12 b) Programs that surf the web
+- ASCII stores characters as numbers 0-128
+# Retrieve the ASCII number for a letter
+>>> print(ord('H'))
+72
+- Unicode is a way to represent characters across different countries in a standardized way (UTF-8 is recommended to use to encode data between systems)
+- inside Python, every character is unicode
+- ASCII and UTF-8 are almost the same
+- when we're retrieving data from networks/web pages (strings in bytes, encode() we have to decode it to Python's standard = UTF-8 (decode()
+- to connect to the external web page a urllib library is used
+- BeautifulSoup or Scrapy are recommended libraries for webscrapping in Python
+
+================================================================================
+
+13 Web services - XML, JSON, REST API
+- JSON and XML are commonly used formates to exchange data, usually using APIs
+- first, we serialize the data (put it either to XML or JSON structure), send it over the network to the end user and then deserialize it (load the data to another program or database)
+- XML schema provides a validation document to which the data in the XML format must conform (to check if the data being sent is in the right format)
+- the most used XML scheme is provided by the W3C consortium (XSD)
+- when dealing with dates/time it is important to present them together with time zone format (usually in UTC/GMT) - ISO 8601
+- JSON structure is like Python dictionary data structure
+- service-oriented approach means that applications use API from various services to offer a complete service to a client (book hotel, rent a car while byuing the flight ticket etc.)

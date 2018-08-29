@@ -1,0 +1,18 @@
+7.1 Principles of information visualization
+- https://www.darkhorseanalytics.com/ (data-ink ratio)
+
+================================================================================
+
+7.2 Basic charting
+- GCA = Get Current Axis
+- %matplotlib inline will render the static plot
+- %matplotlib notebook will render the plot to jupyter notebook as an interactive plot using the notebook backend:
+  import matplotlib as mpl
+  mpl.get_backend()
+  'nbAgg'
+  
+================================================================================
+
+7.4 Applied visualizations
+- import seaborn as sns
+- http://www.tylervigen.com/spurious-correlations

@@ -1,0 +1,11 @@
+1 Fundamentals of machine learning - intro to scikit-learn
+- supervised machine learning - to predict target values from labelled data:
+a. classification (target values are discrete) -> a classifier
+b. regression (target values are continuous) -> a regression function
+- source of labelled data: Amazon's Mechanical Turk, Crowd Flower
+- unsupervised machine learning - find structure in unlabelled data:
+a. clustering (find groups of similar instances)
+b. outlier detection (find unusual patterns)
+- important Python libraries: scikit-learn, pandas, numpy, scipy, matplotlib
+
+

@@ -1,0 +1,29 @@
+6.1 Python basics
+- lambda is an anonymous function
+my function = lambda a,b,c (list of arguments): a + b (expression)
+
+================================================================================
+
+6.2 Basic processing with pandas
+- useful links (Python blogs):
+https://dataskeptic.com/
+https://planetpython.org/
+- to query data with pandas by numeric location (starting at zero), we use the iloc attribute
+- to query data with pandas by the index label, we use the loc attribute
+- with broadcasting, you can apply an operation to every value in the series, changing the series
+- pandas works with numpy in the background and all mathematical functions are vectorized
+- series is a one dimensional data structure in pandas
+- dataframe is a two dimensional data structure in pandas (2 axes array)
+- axis(0) - rows
+- axis(1) - columns
+
+================================================================================
+
+6.3 Advanced processing with pandas
+When inplace=True is passed, the data is renamed in place (it returns nothing),
+so you'd use:
+df.an_operation(inplace=True)
+
+When inplace=False is passed (this is the default value, so isn't necessary),
+ performs the operation and returns a copy of the object, so you'd use:
+df = df.an_operation(inplace=False) 

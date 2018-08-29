@@ -1,0 +1,114 @@
+6 Strings
++ concatenates strings without a space
+- strings starts their index from 0 (f.e. b in banana has index of 0 as it is 
+the first character)
+>>> print(fruit[1:6])
+ineap - 1-2-3-4-5, 6th letter is not included!
+- len(string) will return the lenght of string
+>>> fruit = 'pineapple'
+>>> print('Lenght of string:', len(fruit))
+Lenght of string: 9
+- string library = in-built functions handling strings  (are case-sensitive!))
+>>> greeting = 'Hello Bob!'
+>>> print(greeting)
+Hello Bob!
+>>> print(greeting.lower())   - .lower is an object method
+hello bob!
+- dir(string) shows all the method for string manipulation (str class)
+>>> dir(greeting)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash
+__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__
+', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', '
+isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition'
+, 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+================================================================================
+
+7 Files
+- open a file by open() gives you no data but just handles the file
+- newline is represented by \n as a single character (not two)
+- the print() adds a newline to each line
+- sometimes it is necessary to construct the path to the file (it is not in the
+same directory as the Python script):
+>>> import os
+>>> from os import path
+
+# Read text file, search for pattern, compute average
+>>> file_name = input('Enter file name: ')
+>>> file_path = path.abspath(path.join('..', '..', 'sample_files', 'mbox-short.txt'))
+>>> file_read = open(file_path, 'r')
+
+================================================================================
+
+8 Lists
+- collections = lists, tuples, dictionary (more values than one)
+- lists are defined within square brackets:
+>>> friends = ['Bob', 'Harry', 'Anne', 'Peter', 'Helen', 'Mary']
+>>> print(friends)
+['Bob', 'Harry', 'Anne', 'Peter', 'Helen', 'Mary']
+>>> type(friends)
+<class 'list'>
+- lists can be empty or nested
+- lists are mutable - they can be changed
+- lists main order
+- lists could be manipulated: slicing, appending, checking if something is in a list, sorting, splitting (by delimiter)
+
+================================================================================
+
+9 Dictionaries (associative arrays)
+- second of collections (1st lists, 2nd dictionaries, 3rd tuples)
+- it's a key-value pair
+- it's the most powerful Python data structure
+- dictionaries are defined within curly brackets:
+>>> purse = dict()
+>>> purse['grocery'] = 10
+>>> purse['health'] = 12
+>>> purse['sport'] = 5
+>>> print(purse)
+{'sport': 5, 'grocery': 10, 'health': 12}
+>>> type(purse)
+<class 'dict'>
+- dictionaries use key to to look up for value (lists use number/index)
+>>> print(purse['grocery'])
+10
+- dictionaries are mutable but are not sorted in a definite way as f.e. lists
+- Python can have more than one iteration variable in loops:
+for key, value in purse.items():
+    print(key, value)
+    
+grocery 15
+health 12
+sport 5
+
+================================================================================
+
+10 Tuples
+- third of collections
+- tuples are like lists (better than lists) but cannot ne modified (i.e. tuples are immutable)
+- they can't be sorted, appended, reversed ... (but we can sort the dictionary based on sorting the list of tuples in the order if the keys from dictionary):
+>>> shopping = {'grocery': 10, 'sports': 5, 'pharmacy': 8}
+>>> dict_items = shopping.items()
+>>> print(dict_items)
+dict_items([('sports', 5), ('grocery', 10), ('pharmacy', 8)])
+>>> dict_sorted = sorted(dict_items)
+>>> print(dict_sorted)
+[('grocery', 10), ('pharmacy', 8), ('sports', 5)]
+- they're more efficient and so the temporary variables should be preferred as tuples
+- tuples are defined within parentheses:
+>>> names = ('Bob', 'Mary', 'Helen', 'Peter')
+>>> print(names[2])
+Helen
+>>> type(names)
+<class 'tuple'>
+- tuples can be written also on the left-hand side:
+>>> (a,b) = ('red', 10)
+>>> print(b)
+10
+- tuples are comparable:
+>>> (2,1,2) < (0,1,2)
+False
+
+
+
+
+  

@@ -1,0 +1,70 @@
+1 Introduction
+- Guido van Rossum - the creator of Python
+- data structures
+(https://www.tutorialspoint.com/python/python_variable_types.htm): 
+  
+a)  list [] - can be updated
+b)  tuple () - cannot be updated
+c)  dictionary{key : value) - can be updated with key:value pairs only 
+
+================================================================================
+
+2 Variables and expressions
+type()
+- finds out the type of variable
+>>> type(9)
+<class 'int'>
+>>> type(10.1)
+<class 'float'>
+>>> type('Hello world!')
+<class 'str'>
+
+float()
+- converts numerical integer values to floating points (with decimal point)
+>>> float('123')
+123.0
+>>> float(123)
+123.0
+
+int()
+- converts numerical values which are represented as string values to integers
+>>> print(int('1') + 1)
+2
+
+input()
+- produces a prompt window
+- always saves the output as a string variable!
+>>> name = input('Who are you?')
+Who are you?Martina
+>>> print('Welcome', name, '!')
+Welcome Martina !
+
+================================================================================
+
+3 Conditions
+== equal to
+!= not equal
+
+- indenting is important - use spaces instead of tabs!
+- try/except structure = catching errors (if no tracebacks are allowed/desired)
+
+================================================================================
+
+4 Functions
+- DRY = don't repeat yourself!   (function is a stored piece of code)
+- starts with def
+- calling/invoking a function: name_of_function()
+
+================================================================================
+
+5 Loops and iterations
+- loops have iterations variable that change over time/loop (otherwise it'd be
+ infinite loop)
+- break escapes the loop
+- continue skips to the next iteration of the loop
+- while (indefinite loops) - run until the condition is true
+- for (definite loops) -  run definite number of times
+- always set the flag value (auxiliary variable) to None if comparing
+ (finding min/max value)
+- operators is/is not are usually used only with boolean variables and are
+ stronger than ==
