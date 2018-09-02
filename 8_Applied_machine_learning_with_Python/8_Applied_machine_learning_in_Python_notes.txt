@@ -14,3 +14,15 @@ a. distance (Euclidean, Minkowski)
 b. how many NN
 c. weighting (simple majority rule)
 d. to assign classes to groups
+- standard procedure: get data -> clean data -> create training and test samples -> decide on the estimator (classifier/regressor) -> fit the data on training sample (model fitting produces a trained model) -> predict the result using test sample -> evaluate the model (accuracy score)
+- training is the process of estimating model parameters
+- features (independent variables , usually denoted by X since it is a matrix)
+- target variable/lable (dependent variable to predict, usually denoted by y since it is a scalar)
+
+================================================================================
+
+2 Supervised machine learning
+- kNN is easy to use and understand but very slow when handling a lot of features
+- kNN could represent a baseline or benchmark towards other more sophisticated models
+- kNN default number of neighbours: 5
+- kNN default metric: distance between data points (Minkowski distance with power parameter = 2. i.e. Euclidean)
