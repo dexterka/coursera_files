@@ -1,0 +1,74 @@
+(ok)After training a ridge regression model, you find that the training and test set accuracies are 0.98 and 0.54 respectively. Which of the following would be the best choice for the next ridge regression model you train?
+
+You are overfitting, the next model trained should have a higher value for alpha
+
+================================================================================
+
+After training a Radial Basis Function (RBF) kernel SVM, you decide to increase the influence of each training point and to simplify the decision surface. Which of the following would be the best choice for the next RBF SVM you train?
+
+Decrease C and gamma
+
+================================================================================
+
+Which of the following is an example of multiclass classification? (Select all that apply)
+
+Classify a set of fruits as apples, oranges, bananas, or lemons
+
+
+================================================================================
+
+(ok)Looking at the plot below which shows accuracy scores for different values of a regularization parameter lambda, what value of lambda is the best choice for generalization?
+
+10
+
+================================================================================
+
+(ok)Suppose you are interested in finding a parsimonious model (the model that accomplishes the desired level of prediction with as few predictor variables as possible) to predict housing prices. Which of the following would be the best choice?
+
+Lasso regression
+
+================================================================================
+
+(ok)Match the plots of SVM margins below to the values of the C parameter that correspond to them.
+
+0.1, 1, 10
+
+================================================================================
+
+(ok)Looking at the two figures (Figure A, Figure B), determine which linear model each figure corresponds to:
+
+Figure A: Ridge Regression, Figure B: Lasso Regression
+
+================================================================================
+
+(ok)Looking at Figure A and B, what is a value of alpha that optimizes the R2 score for the Ridge Model?
+
+4
+
+================================================================================
+
+(ok)Looking at Figure A and B, what is a value of alpha that optimizes the R2 score for the Lasso Model?
+
+11
+
+================================================================================
+
+(ok)When running a LinearRegression() model with default parameters on the same data that generated Figures A and B the output coefficients are:
+
+Coef 0	-19.5 (blue)
+Coef 1	48.8 (orange)
+Coef 2	9.7 (green)
+Coef 3	24.6 (red)
+Coef 4	13.2 (purple)
+Coef 5	5.1  (brown)
+
+For what value of Coef 3 is R2 score maximized for the Lasso Model?
+
+0
+
+================================================================================
+
+(ok)Which of the following is true of cross-validation? (Select all that apply)
+
+Fits multiple models on different splits of the data
+Helps prevent knowledge about the test set from leaking into the model

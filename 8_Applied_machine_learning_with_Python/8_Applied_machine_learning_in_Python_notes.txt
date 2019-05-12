@@ -17,7 +17,7 @@ d. to assign classes to groups
 - standard procedure: get data -> clean data -> create training and test samples -> decide on the estimator (classifier/regressor) -> fit the data on training sample (model fitting produces a trained model) -> predict the result using test sample -> evaluate the model (accuracy score)
 - training is the process of estimating model parameters
 - features (independent variables , usually denoted by X since it is a matrix)
-- target variable/lable (dependent variable to predict, usually denoted by y since it is a scalar)
+- target variable (dependent variable to predict, usually denoted by y since it is a scalar)
 
 ================================================================================
 
@@ -26,3 +26,123 @@ d. to assign classes to groups
 - kNN could represent a baseline or benchmark towards other more sophisticated models
 - kNN default number of neighbours: 5
 - kNN default metric: distance between data points (Minkowski distance with power parameter = 2. i.e. Euclidean)
+- ridge regression uses least-squares method to estimate the parameters of the linear function but adds a penalty for large variations in coefficients
+- the addition of a parameter penalty is called regularization (it prevents overfitting by restricting the model and thus to reduce the complexity)
+- ridge regression uses L2 regularization (to minimize the sum of squares of coefficients)
+- the influence of the regularization term is controlled by the alpha parameter (higher alpha means more regularization and simpler models)
+- the default value of alpha is 1.0 (alpha = 0 means classical linear regression, not ridge regression)
+- if the input variables (features) are of different scale it is important to normalize them (f.e. using the MinMax scaling: (xi - xmin) / (xmax - xmin); values range from 0 to 1
+- always fit the scaler using the training data, then apply the same scaler to the test data (otherwise a data leakage can occur - some information from the test data could leak into the training data)
+- after scaling the estimated parameter are harder to interpret
+- lasso regression uses L1 penalty (as opposed to L2 penalty for ridge regression): to minimize the absolute value for the coefficients
+- L1 penalty will set 0 for the least influential variables (default is 1)
+- the prediction formula is the same as with least squares method to estimate the parameters of a linear function
+- use lasso regression if you have few input variables with medium or large effect on the outcome (dependent variable)
+- on the other hand, use ridge regression if you have many input variables with small or medium effect on the outcome (dependent variable)
+- we can add new features to the data (f.e. polynomial features of th 2nd degree would mean a quadratic term) to capture interactions between the original features (beware of a high degree of polynomial features - these polynomial features are often used with regularization term - usually ridge regression)
+- logistic regression is a specific form of regression with binary target (usually) estimating the parameter using a non-linear S shaped function
+- the logistic function transforms real values of independent variables to an output values between 0 and 1 interpreted as the probability the input object belongs to the positive class given its input features
+- logistic regression uses the L2 penalty (using parameter C with the default value of 1); higher values of C corresponds to lower regularization because the algorithm tries to predict the outcome as well as possible
+- classifier margin is the maximum width the decision boundary area can be increased before hitting a data point (best classifier has the maximum margin)
+- support vector machine algorithm is used for classification using the sign function (based on least squares): if the value > 1 (class positive), if the value < 1 (class negative)
+- the classifier with the maximum margin is called linear support vector machine (LSVM) or support vector machine with linear kernel
+- kernelized support vector machines are designed for more complex problems where the classes are not linearly separable (we can add another dimension to the input data = square them and then use linear SVMs to estimate the parameters using linear function in the transformed feature space and not the original input space)
+- kernel is a similarity measure between data points
+- Radial Basis Function kernel (RBF) - default, quadratic feature transformation with gamma and C (regularization, higher values will produce more specific border which are not so smooth) as parameters (lower values of gamma will group more distant points together and produce smooth boundaries whereas larger values of gamma tend to group together points with small distances between each other)
+- Polynomial Kernel - polynomial feature transformation (degree to be specified in the Python script)
+- SVMs are difficult to interpret since they do not provide probabilities directly
+- crossvalidation produces multiple train/test splits to better evaluate the model by averaging the scores from the splits
+- usually a k-fold crossvalidation is used (k = 5 or 10) where k means the number of almost equal samples to which the input data is divided (default is 3)
+- decision trees are likely to overfit so by default the pre-prunning is implemented (setting the max depth of the tree)
+- the overfitting can be avoided using either max_depth, min_samples_leaf or max_leaf_nodes (although it could still not be enough)
+
+Summary:
+SVM - higehr values of C and gamma will produce very specific boundaries and lower accuracy of the model (optimum range of C: 1-10)
+
+- pd.get_dummies converts the categorical variables into indicator variables
+- train_test_split - default split is 75%/25% (train/test)
+
+================================================================================
+
+3 Evaluation (binary vs. multiple classes)
+- accuracy of a model is not always the best evaluation metric (the % of true positives)
+- typically a set of multiple evaluation metrics is used in decision-making process
+- dummy classifiers serve as a sanity check on your classifier's performance because they provide a null metric (e.g. null accuracy baseline) and thus dummy classifiers should not be used for real problems
+- for imbalanced datasets accuracy as a metric should never be used (it always predicts 0s and not 1s); AUC could be used instead
+
+BINARY OUTCOME
+- confusion matrix (y test vs. y test predicted)
+TN  FP
+FN  TP    
+- accuracy = No. of correct predictions / No. of instances  
+accuracy = (TN + TP) / (TN + TP + FN + FP)
+- classification error = 1 - accuracy
+classification error = (FN + FP) / (TN + TP + FN + FP)
+- recall (TPR = True positive rate or sensitivity) - what fraction of all positive instances does the classifier correctly classify as positive
+recall = TP / (TP + FN)
+- precision - what fraction of positive predictions are correct
+precision = TP / (TP + FP)
+- specificity (FPR = False positive rate) - what fraction od all negative instances does the classifier incorrectly identify as positive 
+specificity = FP / (FP + TN)
+- F1 score combines precision and recall into a single metric
+F1 = 2 * ((precision * recall) / (precision + recall))
+- relationship between precision (x axis) and recall (y axis) is P-R curve (precision-recall curve; we try to maximize precision and recall at the same time)
+- relationship between false positive rate (x axis) and true positive rate (y axis) is ROC (we try to maximize TPR and minimize FPR)
+- AUC under the ROC curve is important ( 0 --> 1, the higher the better; AUC of 0.5 is the baseline)
+
+MULTI-CLASS
+- extension of binary class
+- collection of true vs. predicted binary outcomes, one per class
+- confusion matrices are useful
+- macro class average: first calculate the recall across classes and then calculate the average value from these recall results per class
+- each class has equal weight
+- micro class average: calculate the recall for the whole data sample regardless of the classes 
+- each instance has equal weight
+- if the classes have about the same number of instances, micro and micro average will be about the same
+- if the micro average is much lower than the macro average then examine the larger classes for poor metric performance
+- if the macro average is much lower than the micro average then examine the smaller classes for poor metric performance
+- if some classes are much larger (have more instances) than others and you want to:
+a) weight your metric towards the largest ones then use micro average
+b) weight your metric towards the smallest ones then use macro average  
+
+Regression metrics
+- R2 score
+- MAE (mean absolute error) - absolute difference of target and predicted values
+- MSE (mean squared error) - squared difference of target and predicted values
+- median absolute error (robust to outliers)
+
+================================================================================
+
+4 Supervised machine learning - part 2
+- naive bayes classifiers - part of linear classification models (each feature is independent from the others given its class and so they assume that the features have little or no correlation with each other given its class)
+- naive bayes classifer types
+a) Bernoulli - binary features (presence/absence of word)
+b) multinomial - discrete features (word counts)
+c) gaussian - continuous features (statistics computed for each feature in a class), it is typically used for high dimensional data
+
+- random forests (ensemble of random trees) reduce the risk of overfitting (more stable, better generalization)
+- can be used either for:
+a) classification (prediction is the class with the highest probability) or
+b) regression (prediction is the mean of individual tree predictions)
+- n_estimator parameter sets the number of trees (default: 10), large datasets needs higher number
+- random forests are sensitive to max_features parameter (if set to 1 it leads to more complex trees; if set to close the number of features it leads to similar forests with simpler trees)
+- default max_features for classification is the square root of the number of features and for regression is the log base 2 of the number of features
+- max depth controls the depth of each tree
+- no scaling or data transformation is needed but are hard to understand or interpret
+
+- gradient boosted decision trees use ensemble of trees (trees are in series whereas in random forests they are parallel), each tree attempts to correct errors from the previous stage
+- the learning rate controls how hard each new tree tries to correct remaining mistakes from previous round (high = more complex trees; low = simpler trees), default is 0.1
+- they're not recommended for text classification or highly dimensional data
+
+- multi-layer perceptron (MLP) could be used both for classification and regression 
+- there's a hidden layer with hidden units to which an activation function is applied (f.e. tanh = hyperbolic tangent function, usually non-linear; relu = rectified linear unit function; relu is the default activation function in scikit-learn)
+- the most important parameter in MLPClassifier object is the hidden_layer_sizes = how many hidden units are used (the default is 100), there can be more than one hidden layer specified
+- the regularization parameter in MLPClassifier is called alpha and has the same meaning as in lasso or ridge regression (penalizes the large sum of squares for weights)
+- the solver parameter helps to find the optimum weights for the hidden units (adam for larger datasets, lbfgs for smaller datasets)
+
+- how to avoid data leakage - remove variables highly correlated with the target variables (exploratory data analysis)
+
+- unsupervised learning models = no target variables/labels available (f.e. clustering)
+-t-SNE is a part of manifold models (tend to displays subtle structures in high dimensional data), it looks at the distances among points in their neighbourhood, works better with clear and well defined structure of data
+- the basic message is that distances between well-separated clusters in a t-SNE plot may mean nothing
+- there’s a reason that t-SNE has become so popular: it’s incredibly flexible, and can often find structure where other dimensionality-reduction algorithms cannot, unfortunately, that very flexibility makes it tricky to interpret 
