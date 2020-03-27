@@ -2,5 +2,6 @@ csob_branch_atm_map.html
 .ipynb_checkpoints
 .idea
 *.pdf
+*.doc
 8_Applied_machine_learning_with_Python/2_py_geo_reality_sme_sk_webscrapping.ipynb
 8_Applied_machine_learning_with_Python/nehnutelnosti_sk.ipynb

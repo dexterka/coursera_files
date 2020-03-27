@@ -1,0 +1,113 @@
+1 Why study social networks? Basics of NetworkX 
+- networks visualize relationship among entities (nodes/vertices) through their connections (edges)
+- NetworkX in Python (import networkx as nx):
+--  Class Graph() for undirected edges 
+--  Class DiGraph() for directed edges
+- there are also: 
+-- weighted networks (weight applied to the edges), it's a parameter in the add.edge() statement
+-- signed networks (edges have positive or negative signs), it's a parameter in the add.edge() statement 
+- nodes can have multiple types of relationships with other nodes (i.e. multigraphs):
+-- Class MultiGraph() for undirected edges 
+-- Class MultiDiGraph() for directed edges 
+- nodes can also have attributes using a statement add.node() 
+- Bipartite graphs – every edge connects a node in one set (fans) with a node in the other set (basketball teams):
+-- from networkx.algorithms import bipartite (no separate class for bipartite graphs)
+-- bipartite graphs can be projected and can contain the weight showing how many fans have certain basketball teams
+
+================================================================================
+2 Network connectivity
+- triadic closure - the tendency for people who share connections in a social network to become connected
+- how to measure the triadic closure? --> clustering
+a) local clustering coefficient
+- no. of pairs of C's friends who are friends / no. of pairs of C's friends
+-- no. of C's friends (the degree of C, dc) = how many nodes are connected to the node C
+-- no. of pairs of C's friends =  dc(dc -1) / 2
+- if the degree is less than 2, we suppose that the local clustering coefficient is 0
+- nx.clustering(G, 'C')
+b) global clustering coefficient - there are 2 approaches to calculate it
+1) average local clustering coefficient over all nodes in the graph
+-- nx.average_clustering(G)
+2) percentage of open triads (3 nodes connected only by 2 edges) that are triangles in a network
+- inside each triangle are 3 different open triads
+- it's called transitivity = 3*number of closed triads / number of open triads
+-- nx.transitivity(G)
+- transitivity weights nodes with large degree higher
+
+- how to measure the distance between the nodes?
+a) path
+- path length is the number of steps it contains from beginning to end
+- the distance between 2 nodes is the length of the shortest path between them
+- nx.shortest_path(G, 'A', 'H')
+- nx.shortest_path_length(G, 'A', 'H')
+b) breadth-first search - if we want to find out the distance of a single node of a network to all of the remaining nodes of a network
+- iterative approach
+-- nx.bfs_tree(G, 'A')
+-- nx.shortest_path_length(G, 'A')
+c) distance measures
+1) average distance between every pair of nodes
+-- nx.average_shortest_path_length(G)
+2) diameter - maximum distance between any pair of nodes
+-- nx.diameter(G)
+3) eccentricity is the largest distance between a single node and all the other nodes
+-- nx.eccentricity(G)
+4) radius of a graph is the minimum eccentricity
+-- nx.radius(G)
+5) periphery of a graph is the set of nodes that have eccentricity equal to the diameter
+-- nx.periphery(G)
+6) center of a graph is the set of nodes that have eccentricity equal to the radius
+-- nx.center(G)
+
+- connectivity in networks?
+a) undirected graph is connected if for every pair of nodes there is a path between them
+-- nx.is_connected(G)
+b) connected component (undirected graph)
+-- every node in the subset has a path to every other node
+-- no other node has a path to any node in the subset
+-- nx.number_connected_components(G)
+-- sorted(nx.connected_components(G))
+-- nx.node_connected_component(G, 'M')
+c) directed graph is strongly connected if for every pair of nodes u, v there is a directed path from u to v and a directed path from v to u
+-- nx.is_strongly_connected(G)
+- directed graph is weakly connected if replacing all directed edges with undirected edges produces a connected undirected graph
+-- nx.is_weakly_connected(G)
+d) strongly connected component (directed graph)
+-- every node in the subset has a directed path to every other node
+-- no other node has a directed path to and from every node in the subset  
+-- sorted(nx.strongly_connected_components(G))
+e) weakly connected component (directed graph) - the connected components of the graph after replacing all directed edges with undirected edges
+-- sorted(nx.weakly_connected_components(G))
+
+- netwok robustness - the ability of network to maintain its structural properties when it faces failure (=removal of edges or nodes), f.e. airport closures, power line failures
+- nodes and/or edges need to be removed in order to make the network disconnected
+-- nx.node_connectivity(G) - smallest number of nodes that can be removed from the graph on order to disconnect it
+-- nx.minimum_node_cut(G) - which node would that be
+-- nx.edge_connectivity(G) - smallest number of edges that can be removed from the graph on order to disconnect it
+-- nx.minimum_edge_cut(G) - which edge would that be
+-- sorted(nx.all_simple_paths(G, 'G', 'L')) - list all paths from node G to L in directed graph
+- networkX can work with matplotlib but for larger network visualizations Graphviz is a better choice
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
